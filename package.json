@@ -1,0 +1,16 @@
+{
+  "name": "personal-assistant",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel --stream dev",
+    "build": "pnpm --filter @personal-assistant/api build && pnpm --filter @personal-assistant/web build",
+    "verify:init": "pnpm --filter @personal-assistant/api prisma:validate && pnpm --filter @personal-assistant/api prisma:generate && pnpm --filter @personal-assistant/api build && pnpm --filter @personal-assistant/web build",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down"
+  }
+}
